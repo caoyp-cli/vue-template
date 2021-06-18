@@ -1,0 +1,78 @@
+{
+  "name": "webpack-single-template",
+  "version": "1.0.0",
+  "description": "webpack单页项目模板",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --config build/webpack.config.dev.js",
+    "build:test": "rimraf dist && webpack --config build/webpack.config.test.js",
+    "build:prod": "rimraf dist && webpack --config build/webpack.config.prod.js",
+    "lint": "eslint --fix --ext .vue,.js src build",
+    "lint-staged": "lint-staged",
+    "build:stats": "webpack --config build/webpack.config.prod.js --json > stats.json",
+    "analyz": "cross-env NODE_ENV=production ANALYZE=true npm_config_report=true npm run prod",
+    "dll": "webpack --config build/webpack.config.dll"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "lint-staged": {
+    "*.{js, vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "author": "caoyp",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "axios": "^0.21.1",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "happypack": "^5.0.1",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "html-webpack-plugin": "^5.3.1",
+    "image-webpack-loader": "^7.0.1",
+    "lint-staged": "^11.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "2.3.0",
+    "purgecss-webpack-plugin": "^4.0.3",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "terser-webpack-plugin": "^5.1.2",
+    "thread-loader": "^3.0.4",
+    "webpack": "^5.38.1",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.3",
+    "autoprefixer": "^9.7.4",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.2.2",
+    "connect-history-api-fallback": "^1.6.0",
+    "css-loader": "^5.2.6",
+    "eslint-plugin-vue": "^7.10.0",
+    "express": "^4.17.1",
+    "file-loader": "^6.2.0",
+    "http-proxy-middleware": "^2.0.0",
+    "less": "^4.1.1",
+    "less-loader": "^9.0.0",
+    "opn": "^6.0.0",
+    "postcss-loader": "^3.0.0",
+    "rimraf": "^3.0.2",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.7",
+    "vue-router": "^3.5.1",
+    "vue-template-compiler": "^2.6.12",
+    "vuex": "^3.6.2",
+    "webpack-dashboard": "^3.3.3",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^5.7.3"
+  }
+}
